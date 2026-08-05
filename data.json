@@ -6,7 +6,10 @@
       "w": 1080,
       "h": 1350,
       "secret": false,
-      "items": []
+      "items": [
+        "media/cesarvallejo-msfyq2xs.png",
+        "media/lorca-msfyq3tz.png"
+      ]
     },
     {
       "id": "reels",
