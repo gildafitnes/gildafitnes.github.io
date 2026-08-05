@@ -24,7 +24,6 @@
     -webkit-font-smoothing:antialiased;
   }
   a{color:inherit;text-decoration:none}
-  .ch{display:inline-block;white-space:pre;will-change:transform}
 
   /* la tira queda centrada al 45.9% de la altura, como en el boceto */
   .rows{
@@ -87,19 +86,17 @@
 <main class="rows" id="rows" aria-label="publicaciones"></main>
 
 <a class="band" id="band" href="index.html" aria-label="volver al inicio">
-  <span class="logo rb" id="logo">gilda fitnes</span>
+  <span class="logo" id="logo">gilda fitnes</span>
 </a>
 
 <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="imagen ampliada">
-  <button class="close rb" id="close" aria-label="cerrar">x</button>
+  <button class="close" id="close" aria-label="cerrar">x</button>
   <figure id="lbFigure"></figure>
 </div>
 
-<script src="rainbow.js"></script>
 <script src="bounce.js"></script>
 <script src="marquee.js"></script>
 <script>
-  rainbow('.rb');
   marquee({ defaultId: 'portfolio', speed: 58 });
   bounce(document.getElementById('band'), document.getElementById('logo'), 22, 0.77, 0.45);
 </script>
