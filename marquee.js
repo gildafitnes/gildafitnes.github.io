@@ -91,7 +91,7 @@ function marquee(opts){
   }
 
   /* ---- animación ---- */
-  var last = null, dragging = false;
+  var last = null, dragging = false, frenando = false;
 
   function frame(t){
     if(last === null) last = t;
@@ -100,7 +100,9 @@ function marquee(opts){
 
     if(row){
       if(!dragging){
-        row.speed += (row.base - row.speed) * (1 - Math.exp(-dt / TAU));
+        var tau = frenando ? 0.3 : TAU;          // al frenar vuelve enseguida a su ritmo
+        row.speed += (row.base - row.speed) * (1 - Math.exp(-dt / tau));
+        if(frenando && Math.abs(row.speed - row.base) < 3) frenando = false;
         if(!reduce) row.offset += row.speed * dt;
       }
       if(row.setW > 0){
@@ -113,11 +115,14 @@ function marquee(opts){
   requestAnimationFrame(frame);
 
   /* ---- arrastre = spin ---- */
-  var lastX = 0, lastT = 0, vel = 0, moved = 0;
+  var lastX = 0, lastT = 0, vel = 0, moved = 0, ibaRapido = false, ignorarClic = false;
 
   rowsEl.addEventListener('pointerdown', function(e){
     if(e.button && e.button !== 0) return;
     dragging = true; moved = 0; vel = 0;
+    // si venía lanzado, este toque es un frenazo, no un clic
+    ibaRapido = !!row && Math.abs(row.speed) > Math.abs(row.base) * 1.5;
+    frenando = false;
     lastX = e.clientX; lastT = performance.now();
     try{ rowsEl.setPointerCapture(e.pointerId); }catch(err){}
     rowsEl.classList.add('dragging');
@@ -138,7 +143,14 @@ function marquee(opts){
     if(!dragging) return;
     dragging = false;
     rowsEl.classList.remove('dragging');
-    if(moved <= 8 || !row) return;               // fue un toque, no un arrastre
+    if(!row) return;
+    if(moved <= 8){                              // no arrastró: fue un toque
+      if(ibaRapido){                             // iba lanzado, así que frena
+        frenando = true;
+        ignorarClic = true;
+      }
+      return;
+    }
     row.speed = Math.max(-MAXSPIN, Math.min(MAXSPIN, -vel)) + row.base * 0.15;
   }
   rowsEl.addEventListener('pointerup', endDrag);
@@ -147,6 +159,7 @@ function marquee(opts){
 
   /* ---- popup ---- */
   rowsEl.addEventListener('click', function(e){
+    if(ignorarClic){ ignorarClic = false; return; }
     if(moved > 8) return;
     var item = e.target.closest ? e.target.closest('.item') : null;
     if(item) open(item.dataset.src);
@@ -156,9 +169,10 @@ function marquee(opts){
     lbFigure.innerHTML = '';
     if(isVideo(src)){
       var v = document.createElement('video');
-      v.src = src; v.controls = true; v.autoplay = true; v.loop = true;
-      v.muted = true; v.playsInline = true; v.setAttribute('playsinline','');
+      v.src = src; v.controls = true; v.loop = true;
+      v.playsInline = true; v.setAttribute('playsinline','');
       lbFigure.appendChild(v);
+      v.play().catch(function(){ v.muted = true; v.play().catch(function(){}); });
     }else{
       var img = document.createElement('img');
       img.src = src; img.alt = '';
