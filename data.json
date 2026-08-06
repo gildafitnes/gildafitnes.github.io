@@ -14,7 +14,8 @@
         "media/chatgpt-image-5-ago-2026-13-01-20-msfzenehq6.jpg",
         "media/baudelaire-mshlyqxlf9.jpg",
         "media/marcopolo-mshlyscodn.jpg",
-        "media/chatgpt-image-6-ago-2026-16-14-40-mshlz7sirf.jpg"
+        "media/chatgpt-image-6-ago-2026-16-14-40-mshlz7sirf.jpg",
+        "media/paine-mshmi9f75j.jpg"
       ]
     },
     {
@@ -26,6 +27,20 @@
       "items": [
         "media/hand-picking-up-book-202608050936-msfzqvfkc2.mp4",
         "media/lorca-msg1ny9lfw.mov"
+      ]
+    },
+    {
+      "id": "clean",
+      "title": "clean",
+      "w": 1080,
+      "h": 1350,
+      "secret": true,
+      "items": [
+        "media/cesarvallejo-msfyq2xs.png",
+        "media/baudelaire-mshlyqxlf9.jpg",
+        "media/marcopolo-mshlyscodn.jpg",
+        "media/chatgpt-image-6-ago-2026-16-14-40-mshlz7sirf.jpg",
+        "media/paine-mshmi9f75j.jpg"
       ]
     }
   ]
