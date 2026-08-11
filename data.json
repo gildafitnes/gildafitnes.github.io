@@ -29,15 +29,17 @@
       ]
     },
     {
-      "id": "clean",
-      "title": "clean",
+      "id": "semana11082026",
+      "title": "semana1",
       "w": 1080,
       "h": 1350,
       "secret": true,
       "items": [
         "media/cesarvallejo-msfyq2xs.png",
+        "media/chatgpt-image-5-ago-2026-09-12-40-msfzeloyrf.jpg",
         "media/marcopolo-mshlyscodn.jpg",
         "media/chatgpt-image-6-ago-2026-16-14-40-mshlz7sirf.jpg",
+        "media/chatgpt-image-8-ago-2026-15-59-39-mskg3onscu.jpg",
         "media/paine-mshmi9f75j.jpg"
       ]
     }
