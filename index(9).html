@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>gilda fitnes — soluciones ópticas</title>
+<meta name="description" content="gilda fitnes · soluciones ópticas · portfolio">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90' font-family='Arial' font-weight='bold' font-style='italic' fill='%230018ff'>g</text></svg>">
+<style>
+  :root{
+    --azul:#0018ff;
+    /* --u = 1% del ancho del lienzo 1080x1350 */
+    --u: min(1vw, 0.8vh);
+    --fs: calc(6.85 * var(--u));   /* 74px sobre 1080 */
+    --cond: 0.853;                 /* condensado del boceto */
+  }
+  @supports (height: 100dvh){ :root{ --u: min(1vw, 0.8dvh); } }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    background:#fff;color:var(--azul);
+    font-family:Arial, Helvetica, sans-serif;
+    font-weight:700;font-style:italic;
+    overflow:hidden;
+    display:flex;align-items:center;justify-content:center;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;text-decoration:none}
+  a:focus-visible{outline:3px solid var(--azul);outline-offset:4px}
+
+  .stage{
+    position:relative;flex:0 0 auto;overflow:hidden;
+    width:min(100vw, 80vh);   height:min(125vw, 100vh);
+    width:min(100vw, 80dvh);  height:min(125vw, 100dvh);
+  }
+
+  .ch{display:inline-block;white-space:pre;will-change:transform}
+
+  .lbl{
+    position:absolute;white-space:nowrap;
+    font-size:var(--fs);line-height:1;
+    transform:scaleX(var(--cond));
+    transform-origin:left top;
+  }
+  .opticas  {left:5.75%; top:31.80%}
+  .opticas-toggle{
+    border:0;background:transparent;color:inherit;padding:0;margin:0;
+    font-family:inherit;font-weight:inherit;font-style:inherit;
+    cursor:pointer;text-align:left;
+  }
+  .opticas-toggle:focus-visible{outline:3px solid var(--azul);outline-offset:4px}
+  .opticas-detail{
+    position:absolute;left:5.75%;top:40.25%;
+    max-width:88%;
+    font-size:calc(1.28 * var(--u));line-height:1.35;
+    font-style:normal;font-weight:400;letter-spacing:.02em;
+    white-space:normal;
+    opacity:0;visibility:hidden;transform:translateY(-3px);
+    transition:opacity .18s ease, transform .18s ease, visibility .18s;
+  }
+  .opticas-detail.open{
+    opacity:1;visibility:visible;transform:translateY(0);
+  }
+  .portfolio{left:5.46%; top:53.02%}
+  .mail     {left:10.28%;top:74.57%}
+  .ig       {left:62.87%;top:85.32%}
+
+  .gafas{position:absolute;left:64.72%;top:26.22%;width:30.19%;height:auto;display:block}
+
+  /* área de rebote del boceto (el recuadro rojo, sin dibujarlo) */
+  .area{position:absolute;left:33.89%;top:0.81%;width:62.69%;height:20.89%}
+  .logo{
+    position:absolute;left:0;top:0;white-space:nowrap;
+    font-size:var(--fs);line-height:1;
+    transform-origin:left top;
+    will-change:transform;
+  }
+</style>
+</head>
+<body>
+
+<main class="stage">
+
+  <div class="area" id="area"><span class="logo" id="logo">gilda fitnes</span></div>
+
+  <button class="lbl opticas opticas-toggle" id="opticasToggle" type="button" aria-expanded="false" aria-controls="opticasDetail">soluciones ópticas</button>
+  <div class="opticas-detail" id="opticasDetail" aria-hidden="true">Cover design · Editorial systems · Interior layout · Typesetting · Artworking / Prepress · Print production</div>
+  <img class="gafas" src="gafas.svg" alt="" aria-hidden="true">
+
+  <a class="lbl portfolio rb" href="portfolio.html">portfolio</a>
+  <a class="lbl mail" href="mailto:algodonycisne@gmail.com">algodonycisne@gmail.com</a>
+  <a class="lbl ig" href="https://www.instagram.com/gildafitnes/" target="_blank" rel="noopener">ig</a>
+
+</main>
+
+<script src="rainbow.js"></script>
+<script src="bounce.js"></script>
+<script>
+  rainbow('.rb');
+  bounce(document.getElementById('area'), document.getElementById('logo'), 34, 0.81, 0.24);
+
+  const opticasToggle = document.getElementById('opticasToggle');
+  const opticasDetail = document.getElementById('opticasDetail');
+  opticasToggle.addEventListener('click', () => {
+    const open = opticasToggle.getAttribute('aria-expanded') === 'true';
+    opticasToggle.setAttribute('aria-expanded', String(!open));
+    opticasDetail.setAttribute('aria-hidden', String(open));
+    opticasDetail.classList.toggle('open', !open);
+  });
+</script>
+</body>
+</html>
