@@ -24,7 +24,10 @@
         "media/johnkeats-msoije737y.jpg",
         "media/simoneweil-msoijf5a2l.jpg",
         "media/chatgpt-image-11-ago-2026-12-09-43-msoiloen11.jpg",
-        "media/chatgpt-image-11-ago-2026-12-20-19-msoilps6mz.jpg"
+        "media/chatgpt-image-11-ago-2026-12-20-19-msoilps6mz.jpg",
+        "media/marisco-mtl91xja83.jpg",
+        "media/frigo-mtl91z064j.jpg",
+        "media/fantasia-mtl91zzjfn.jpg"
       ]
     },
     {
@@ -61,6 +64,18 @@
         "media/aristoteles-msoijbrb33.jpg",
         "media/chatgpt-image-11-ago-2026-12-09-43-msoiloen11.jpg",
         "media/chatgpt-image-11-ago-2026-12-20-19-msoilps6mz.jpg"
+      ]
+    },
+    {
+      "id": "03092026",
+      "title": "03092026",
+      "w": 1080,
+      "h": 1350,
+      "secret": true,
+      "items": [
+        "media/marisco-mtl91xja83.jpg",
+        "media/frigo-mtl91z064j.jpg",
+        "media/fantasia-mtl91zzjfn.jpg"
       ]
     }
   ]
